@@ -1,4 +1,6 @@
-Description: EntryTrackMate is a Telegram bot designed for tracking the duration of stay in a foreign country and providing regular reminders for Visa Runs or Border Runs.
+**Description:**
+
+< a href="https://www.t.me/Entry_Track_Mate_bot">EntryTrackMate</a> is a Telegram bot designed for tracking the duration of stay in a foreign country and providing regular reminders for Visa Runs or Border Runs.
 
 **Key Features:**
 

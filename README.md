@@ -8,9 +8,11 @@ Description: EntryTrackMate is a Telegram bot designed for tracking the duration
 - The bot tracks the correct date and time based on the provided geolocation.
   
 **Screenshots:**
-![start_screen](<img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/1.jpg" width="300" height="200">)
-![share_location](https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/2.jpg)
-![Menu](https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/3.jpg)
+<div style="display: flex; justify-content: center;">
+  <img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/1.jpg" width="30%">
+  <img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/2.jpg" width="30%">
+  <img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/3.jpg" width="30%">
+</div>
 
 **Imortant:**
 The script works in the Google Apps Script environment and requires Google Sheets for use as a database.

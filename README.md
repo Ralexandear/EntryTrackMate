@@ -2,10 +2,12 @@ Description: EntryTrackMate is a Telegram bot designed for tracking the duration
 
 **Key Features:**
 
+
 - Registration of entry into the temporary residence country
 - Regular reminders as the deadline approaches
 - Multilingual support; currently available in English, Belarusian, Russian, Serbian, and Ukrainian.
 - The bot tracks the correct date and time based on the provided geolocation.
+
   
 **Screenshots:**
 <div style="display: flex; justify-content: center;">
@@ -13,6 +15,7 @@ Description: EntryTrackMate is a Telegram bot designed for tracking the duration
   <img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/2.jpg" width="30%">
   <img src="https://github.com/Ralexandear/EntryTrackMate/blob/main/screenshots/3.jpg" width="30%">
 </div>
+
 
 **Imortant:**
 

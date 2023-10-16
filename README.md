@@ -15,7 +15,8 @@ Description: EntryTrackMate is a Telegram bot designed for tracking the duration
 </div>
 
 **Imortant:**
-The script works in the Google Apps Script environment and requires Google Sheets for use as a database.
-If you have questions or suggestions, please contact me at https://www.t.me/Ralexandear.
+
+- The script works in the Google Apps Script environment and requires Google Sheets for use as a database.
+- If you have questions or suggestions, please contact me at https://www.t.me/Ralexandear.
 
 License: Creative Commons Non-Commercial (CC BY-NC)

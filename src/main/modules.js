@@ -67,17 +67,21 @@ function selectLanguage({message, messageText, botCommand, user}) {
  * 
  */
 function setTimezone({messageText, message, user}){
-  if (! message.hasOwnProperty('location')){
-    user.sendMessage(user.messageConstructor('unknownError'))
+  if (messageText && ['⭐️ Asia/Tbilisi', '⭐️ Europe/Belgrade'].includes(messageText)){
+    const timezone = messageText.replace('⭐️ ','');
+    user.setTimezone({timezone})
+  }
+  else if (message.hasOwnProperty('location')){
+    const {latitude: lat, longitude: lng} = message.location
+    user.setTimezone({lat, lng})
+  }
+  else{
+     user.sendMessage(user.messageConstructor('unknownError'))
     
     if (user.program === 'settings') user.sendMessage(user.messageConstructor('editTimezone'))
     else user.sendMessage(user.messageConstructor('getTimezone'))
-    
     return
   }
-
-  const {latitude: lat, longitude: lng} = message.location
-  user.setTimezone(lat, lng)
 
   if (user.program === 'settings'){
     user.openMenu(user.textMessages.acceptTimezone)
@@ -87,13 +91,13 @@ function setTimezone({messageText, message, user}){
         user.sendMessage(user.messageConstructor('informationMessage')).message_id
       )
     }
+    return
   }
-  else {
-    user
-      .setNextStep('selectDuration')
-      .sendMessage(user.messageConstructor('acceptTimezone'))
-    user.sendMessage(user.messageConstructor('selectDuration'))
-  }
+  
+  user
+    .setNextStep('selectDuration')
+    .sendMessage(user.messageConstructor('acceptTimezone'))
+  user.sendMessage(user.messageConstructor('selectDuration'))
 }
 
 

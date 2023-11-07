@@ -11,12 +11,10 @@ function checkSession({user}){
 }
 
 function finishSession(user, editMessage = false){
-  if (editMessage) return user.editMessageText(user.messageConstructor('sessionClosed'))
-  user.sendMessage(user.messageConstructor('sessionClosed'))
+  if (editMessage) user.editMessageText(user.messageConstructor('sessionClosed'))
+  else user.sendMessage(user.messageConstructor('sessionClosed'))
 
-  user
-    .closeSession()
-    .setProgram('menu')
+  return user.closeSession().setProgram('menu')
 }
 
 function markEntry(user, selectedDate, editMessage = false) {

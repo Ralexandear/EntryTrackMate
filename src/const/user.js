@@ -155,7 +155,7 @@ class User extends Telegram {
   openMenu(text) {
     this.deleteNextStep();
     this.sendMessage(new Message(text ?? this.textMessages.menu).setReplyMarkup(this.replyMarkups.menu));
-    this.setProgram('menu');
+    return this.setProgram('menu');
   }
 
   // Method for closing a user session.
@@ -176,16 +176,37 @@ class User extends Telegram {
   }
 
   // Method for setting the user's timezone based on latitude and longitude.
-  setTimezone(lat, lng) {
-    const link = `http://api.timezonedb.com/v2.1/get-time-zone?key=${TZ_TOKEN}&format=json&by=position&lat=${lat}&lng=${lng}`;
-    const lock = LockService.getScriptLock();
+  setTimezone({lat, lng, timezone}) {
+    if (timezone){
+      this.setData('timezone', timezone)
+    }
+    else {
+      const link = `http://api.timezonedb.com/v2.1/get-time-zone?key=${TZ_TOKEN}&format=json&by=position&lat=${lat}&lng=${lng}`;
+      const lock = LockService.getScriptLock();
 
-    if (lock.tryLock(360000)) {
-      this.setData('timezone', JSON.parse(UrlFetchApp.fetch(link).getContentText()).zoneName);
+      if (lock.tryLock(360000)) {
+        this.setData('timezone', JSON.parse(UrlFetchApp.fetch(link).getContentText()).zoneName);
 
-      Utilities.sleep(1000);
-      lock.releaseLock();
+        Utilities.sleep(1000);
+        lock.releaseLock();
+      }
     }
     return this;
+  }
+
+  block () {
+    this
+      .deleteNextStep()
+      .setProgram('blocked')
+      .setLanguage('')
+      .setNotification('')
+      .setDateStart('')
+      .setDateEnd('')
+      .setDuration('')
+      .setMessageId('')
+      .timezone = '';
+
+    $.USER_TABLE.getRange(`${this.row}:${this.row}`).clearNote()
+    this.save()
   }
 }

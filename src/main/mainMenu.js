@@ -13,6 +13,7 @@ function mainMenu({user, messageText}) {
       }
     case '🔄':
       user.setProgram('menu').deleteNextStep()
+      
       if (user.dateStart){
         return user
           .deletePreviousKeyboard()

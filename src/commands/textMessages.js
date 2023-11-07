@@ -234,10 +234,9 @@ class TextMessages {
       currentDate = getCurrentDate_({user}),
       dateEnd = new Date(user.dateEnd),
       timeDifference = dateEnd - currentDate,
-      duration = Math.round(Math.abs(currentDate - new Date(user.dateStart)) / 86400000),
+      duration = Math.round(Math.abs(currentDate - new Date(user.dateStart)) / 86400000) + 1,
       dayDifference = getDayDifference_(timeDifference);
-    log(new Date(user.dateStart))
-    log(user.dateStart)
+ 
     let text = '__________________________\n✔️ ';
     
     if (language === 'ru'){
@@ -294,15 +293,15 @@ class TextMessages {
     switch (this.language){
       default:
       case 'en':
-        return `Check-in date selected: ${date}`;
+        return `Check-in date selected:\n${date}`;
       case 'ru':
-        return `Выбрана дата въезда: ${date}`;
+        return `Выбрана дата въезда:\n${date}`;
       case 'uk':
-        return `Вибрано дату в'їзду: ${date}`
+        return `Вибрано дату в'їзду:\n${date}`
       case 'be':
-        return `Абраная дата ўезду: ${date}`
+        return `Абраная дата ўезду:\n${date}`
       case 'rs':
-        return `Izabran datum prijave: ${date}`
+        return `Izabran datum prijave:\n${date}`
     }
   }
   get settings(){

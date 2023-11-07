@@ -22,13 +22,15 @@ class Buttons {
     else if (language === 'rs') text += 'Deli lokaciju'
     else text += "Share Location"
 
-    return [[{text, request_location: true}]]
+    return [
+      [{text: '⭐️ Asia/Tbilisi'}, {text: '⭐️ Europe/Belgrade'}],
+      [{text, request_location: true}],    
+    ]
   }
   get editTimezone (){
-    return [
-      [this.getTimezone[0][0]],
-      [this.backButton]
-    ]
+    const buttons = this.getTimezone;
+    buttons.push([this.backButton])
+    return buttons
   }
   get editDuration(){
     return this.inline.convertToInline(this.selectDuration)

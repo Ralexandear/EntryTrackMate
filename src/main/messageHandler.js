@@ -1,4 +1,5 @@
 function messageHandler(message) {
+  if (! message) return
   if (message.location){
     if(message.location.hasOwnProperty('live_period')) return deleteMessage_(message.from.id, message.message_id);
   } 
@@ -26,7 +27,7 @@ function messageHandler(message) {
           case 'selectLanguage':
             return selectLanguage({message, messageText, user});
           case 'getTimezone':
-            return setTimezone({message, user})
+            return setTimezone({messageText, message, user})
           case 'selectDuration':
             return selectDuration({message, messageText, user})
         }
@@ -56,7 +57,7 @@ function messageHandler(message) {
           return user.sendMessage(user.messageConstructor('dateIsTooSmall'))
         }
         else {
-          log(user.replyMarkups.inline.acceptManualDate(messageText))
+          // log(user.replyMarkups.inline.acceptManualDate(messageText))
           return user.setMessageId(
             user.sendMessage(
               new Message(
@@ -68,9 +69,9 @@ function messageHandler(message) {
         return selectDuration()
       case 'menu':
         return mainMenu({user, messageText})
-      case 'getTimezone':
+      // case 'getTimezone':
       
-      case 'enterDate':
+      // case 'enterDate':
         
     }
   } catch (e) {

@@ -1,7 +1,7 @@
 function doPost(e) { 
   try{
     var update = JSON.parse(e.postData.contents);
-    debug(update)
+    // debug(update)
 
     if (update.hasOwnProperty('message')) var key = 'message';
     else if (update.hasOwnProperty('edited_message')) var key = 'edited_message';
@@ -13,7 +13,7 @@ function doPost(e) {
         chatType = signal.chat?.type
 
       if (signal.chat?.type === 'private' && signal.new_chat_member?.status === 'kicked'){
-        return new User(id).loadData().setProgram('blocked').save()
+        return new User(id).loadData().block()
       }
     }
     else return;
@@ -38,15 +38,15 @@ function getUserdata(){
       values = $.USER_TABLE.getDataRange().getValues(),
       mapping = {}
 
-    values.shift().map((e, el) => mapping[e] = el)
+    values[0].map((e, el) => mapping[e] = el)
     $.saveMapping(mapping)
 
-    for (let i = values.length - 1; i > -1; i--){
+    for (let i = values.length - 1; i > 0; i--){
       if (values[i][mapping.id] === MESSAGE.id){
         for (let key in mapping){
           USER[key] = values[i][ mapping[key] ]
         }
-        return USER['row'] = i + 2;
+        return USER['row'] = i + 1;
       }
     }
   }

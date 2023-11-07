@@ -36,11 +36,11 @@ function updateKeyboards (){
 
     if (lastNotification !== now && timezonesAndDates.has(user.timezone)){
       
-      if([60,30,15,10,5].includes(user.daysLeft) || user.daysLeft < 3){
+      if([60,30,15,7].includes(user.daysLeft) || user.daysLeft < 4){
         user
           .deletePreviousKeyboard()
           .setMessageId(
-            user.sendMessage(new Message(user.textMessages.notification).setReplyMarkup(user.replyMarkups.informationMessage).muteExceptions())?.message_id
+            user.sendMessage(new Message(user.textMessages.notification).setReplyMarkup(user.replyMarkups.informationMessage).muteExceptions())?.message_id 
           )
         user.setNotification(now)
       }
@@ -50,6 +50,7 @@ function updateKeyboards (){
 
   $.USER_TABLE.getRange(2, 1, notes.length, mapping.size).setNotes(notes)
 }
+
 
 function checkTime_() {
   const
